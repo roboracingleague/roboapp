@@ -2,6 +2,9 @@
 android/key.properties
 *.jks
 
+# Google FireBase keystore
+google-services.json
+
 # Miscellaneous
 *.class
 *.log

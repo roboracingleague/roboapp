@@ -44,7 +44,7 @@ android {
 
     defaultConfig {
         applicationId "com.roboracingleague.robo_app"
-        minSdkVersion 16
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -81,4 +81,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    implementation 'com.google.firebase:firebase-analytics:17.2.0'
 }
+
+apply plugin: 'com.google.gms.google-services'
