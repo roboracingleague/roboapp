@@ -14,6 +14,10 @@ dependencies:
 
   cupertino_icons: ^0.1.2
 
+  get_it: ^3.0.3 # https://pub.dartlang.org/packages/get_it
+  flavor_banner:
+    git: git://github.com/muldec/flavor_banner.git
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

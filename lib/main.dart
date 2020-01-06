@@ -1,12 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flavor_banner/flavor_banner.dart';
 import 'package:flutter/material.dart';
 import 'package:robo_app/models/voter.dart';
+import 'package:robo_app/services/locator.dart';
 import 'package:robo_app/theme/style.dart';
-
-void main() {
-  return runApp(MyApp());
-}
-
 
 class MyApp extends StatelessWidget {
   @override
@@ -14,7 +11,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: appTheme(),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: FlavorBanner(
+        child: MyHomePage(title: 'Flutter Demo Home Page'),
+        flavorConfig: locator<FlavorConfig>(),
+      ),
     );
   }
 }

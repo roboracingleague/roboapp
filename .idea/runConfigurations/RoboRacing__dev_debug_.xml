@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="RoboRacing [dev/debug]" type="FlutterRunConfigurationType" factoryName="Flutter" singleton="false">
+    <option name="buildFlavor" value="dev" />
+    <option name="filePath" value="$PROJECT_DIR$/lib/main_dev.dart" />
+    <method v="2">
+      <option name="Gradle.BeforeRunTask" enabled="false" tasks=":clean" externalProjectPath="$PROJECT_DIR$/android" vmOptions="" scriptParameters="" />
+    </method>
+  </configuration>
+</component>
