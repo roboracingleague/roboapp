@@ -1,5 +1,6 @@
 # Google Store keystore
 android/key.properties
+*.jks
 
 # Miscellaneous
 *.class
