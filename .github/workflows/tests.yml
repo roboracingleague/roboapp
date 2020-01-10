@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - develop
+      - connect-to-firebase
   pull_request:
     branches:
       - master
@@ -14,14 +15,32 @@ jobs:
   test:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-java@v1
+      - name: Clone repo
+        uses: actions/checkout@v1
+
+      - name: Setup Java
+        uses: actions/setup-java@v1
         with:
           java-version: '12.x'
-      - uses: subosito/flutter-action@v1.1.1
+
+      - name: Install Flutter stable
+        uses: subosito/flutter-action@v1.1.1
         with:
           channel: stable
-      - run: flutter pub get
-      - run: flutter test
-      - run: flutter build appbundle --profile
-      - run: flutter build ios --no-codesign
+
+      - name: Get Dependencies
+        run: flutter pub get
+
+      - name: Launch Test suite
+        run: flutter test
+
+      - name: Create dummy google-services file required by Firestore at build time
+        run: |
+          mv android/app/google-services.dummy android/app/google-services.json
+          mv ios/Runner/GoogleService-Info.dummy ios/Runner/GoogleService-Info.plist
+
+      - name: Build Android
+        run: flutter build appbundle --profile
+
+      - name: Build iOS
+        run: flutter build ios --no-codesign
