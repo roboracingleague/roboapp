@@ -4,6 +4,7 @@ android/key.properties
 
 # Google FireBase keystore
 google-services.json
+GoogleService-Info.plist
 
 # Miscellaneous
 *.class
