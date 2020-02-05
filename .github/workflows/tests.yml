@@ -5,7 +5,6 @@ on:
     branches:
       - master
       - develop
-      - connect-to-firebase
   pull_request:
     branches:
       - master
