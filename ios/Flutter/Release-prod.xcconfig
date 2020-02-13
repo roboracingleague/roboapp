@@ -1,0 +1,4 @@
+#include "Release.xcconfig"
+
+FLUTTER_TARGET=lib/main_prod.dart
+bundle_name=Robo Racing League

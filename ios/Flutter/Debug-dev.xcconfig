@@ -1,0 +1,6 @@
+#include "Debug.xcconfig"
+
+FLUTTER_TARGET=lib/main_dev.dart
+bundle_suffix=.dev
+asset_suffix=-dev
+bundle_name=[DEV] Robo Racing League

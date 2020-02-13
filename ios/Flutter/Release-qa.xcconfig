@@ -1,0 +1,6 @@
+#include "Release.xcconfig"
+
+FLUTTER_TARGET=lib/main_qa.dart
+bundle_suffix=.qa
+asset_suffix=-qa
+bundle_name=[QA] Robo Racing League
