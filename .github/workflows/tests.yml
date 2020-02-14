@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - develop
+      - adapt-firebase-flavors
   pull_request:
     branches:
       - master
@@ -13,6 +14,10 @@ on:
 jobs:
   test:
     runs-on: macos-latest
+
+    env:
+      BUILD_FLAVOR: prod
+
     steps:
       - name: Clone repo
         uses: actions/checkout@v1
@@ -35,11 +40,15 @@ jobs:
 
       - name: Create dummy google-services file required by Firestore at build time
         run: |
-          mv android/app/google-services.dummy android/app/google-services.json
+          mv android/app/src/$BUILD_FLAVOR/google-services.dummy android/app/src/$BUILD_FLAVOR/google-services.json
           mv ios/Runner/GoogleService-Info.dummy ios/Runner/GoogleService-Info.plist
 
       - name: Build Android
-        run: flutter build appbundle --profile
+        env:
+          BUILD_TARGET: appbundle
+        run: flutter build $BUILD_TARGET --profile --flavor=$BUILD_FLAVOR --target=lib/main_$BUILD_FLAVOR.dart
 
       - name: Build iOS
-        run: flutter build ios --no-codesign
+        env:
+          BUILD_TARGET: ios
+        run: flutter build $BUILD_TARGET --profile --flavor=$BUILD_FLAVOR --target=lib/main_$BUILD_FLAVOR.dart --no-codesign
