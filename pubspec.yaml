@@ -22,6 +22,16 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+### Uncomment the following lines and run
+### `flutter pub run flutter_launcher_icons:main`
+### to generate all app icons from a single icon file
+#
+#  flutter_launcher_icons: "^0.7.3"
+#
+#flutter_icons:
+#  android: true
+#  ios: true
+#  image_path: "assets/icon/icon-prod.png"
 
 
 flutter:
