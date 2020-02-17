@@ -1,21 +1,32 @@
-name: Testing
+name: Build
 
 on:
   push:
     branches:
-      - '**'
+      - master
+      - develop
   pull_request:
     branches:
       - master
       - develop
 
 env:
+  BUILD_FLAVOR: prod
   JAVA_VERSION: '12.x'
 
 jobs:
 
-  test:
-    runs-on: ubuntu-latest
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        include:
+          - os: ubuntu-latest
+            target: android
+          - os: macos-latest
+            target: ios
+
+    runs-on: ${{ matrix.os }}
 
     steps:
       - name: Clone repo
@@ -34,5 +45,5 @@ jobs:
       - name: Get Dependencies
         run: flutter pub get
 
-      - name: Launch Test suite
-        run: flutter test
+      - name: Build ${{ matrix.target }}
+        run: .github/workflows/build-${{ matrix.target }}.sh $BUILD_FLAVOR
