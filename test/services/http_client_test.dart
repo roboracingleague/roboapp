@@ -48,40 +48,25 @@ void main() {
       expect(actual.statusCode, 404);
     });
 
-    /*
-      FIXME: can't make this unit test work
-    Expected: throws Type:<TimeoutException>
-      Actual: <Instance of 'Future<Response>'>
-       Which: threw TimeoutException:<TimeoutException: >
-     */
-    test('should timeout after 2 seconds', () async {
+    test('should timeout after 5 seconds', () async {
       HttpClient httpclient = HttpClient('http://mockito', client: client);
+
+      final timeout = Duration(seconds: 5);
 
       fakeAsync((async) {
         when(
           client.get(any),
         ).thenAnswer(
-            (_) => Future.delayed(
-            Duration(seconds: 40),
-              () => null,
-          ),
+            (_) => Future.delayed(timeout * 2, () => null),
         );
 
-        Future future = httpclient.get(
-          'resource',
-          timeout: const Duration(seconds: 2),
-        );
+        Future future = httpclient.get('resource', timeout: timeout);
 
-        expect(
-          future,
-          throwsA(TimeoutException)
-        );
+        expect(future, throwsA(isA<TimeoutException>()));
 
-        async.elapse(Duration(seconds: 2));
-
+        async.elapse(timeout);
       });
-
-    }, skip: true);
+    });
   });
 
   //TODO : Integration testing => Retrieve from web server
