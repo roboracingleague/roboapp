@@ -20,8 +20,7 @@ class RulesMarkdown extends StatelessWidget {
               ],
             );
           }
-
-          return Container(
+          return Scrollbar(
             child: Markdown(
               data: snapshot.data,
               shrinkWrap: true,

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -38,8 +39,7 @@ void main() {
 
 /// Wraps a widget with a left-to-right [Directionality] for tests.
 Widget _boilerplate(Widget child) {
-  return Directionality(
-    textDirection: TextDirection.ltr,
-    child: child,
+  return MaterialApp(
+    home: child,
   );
 }
