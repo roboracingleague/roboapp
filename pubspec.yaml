@@ -1,7 +1,7 @@
 name: robo_app
 description: The official Robo Racing League Mobile Application
 
-version: 0.0.1+2
+version: 0.0.2
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -10,9 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cloud_firestore: ^0.13.0+1 # https://pub.dartlang.org/packages/cloud_firestore
-
-  cupertino_icons: ^0.1.2
+  cloud_firestore: ^0.13.4 # https://pub.dartlang.org/packages/cloud_firestore
 
   flutter_markdown: ^0.3.3 # https://pub.dartlang.org/packages/flutter_markdown
 
@@ -21,6 +19,9 @@ dependencies:
   get_it: ^3.0.3 # https://pub.dartlang.org/packages/get_it
   flavor_banner:
     git: git://github.com/muldec/flavor_banner.git
+
+dependency_overrides:
+  firebase_core: 0.4.4
 
 dev_dependencies:
   flutter_test:

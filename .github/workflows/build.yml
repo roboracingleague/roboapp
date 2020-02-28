@@ -42,8 +42,8 @@ jobs:
         with:
           channel: stable
 
-      - name: Get Dependencies
-        run: flutter pub get
+      - name: Flutter Doctor
+        run: flutter doctor -v
 
       - name: Build ${{ matrix.target }}
         run: .github/workflows/build-${{ matrix.target }}.sh $BUILD_FLAVOR

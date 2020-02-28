@@ -8,6 +8,6 @@ echo "Create dummy GoogleService-Info.plist file required by Firestore at build 
 
 mv ios/Runner/GoogleService-Info.dummy ios/Runner/GoogleService-Info.plist
 
-echo "Build Android"
+echo "Build iOS"
 
-flutter build ios --profile --flavor=$BUILD_FLAVOR --target=lib/main_$BUILD_FLAVOR.dart --no-codesign
+flutter build ios --profile --flavor=${BUILD_FLAVOR} --target=lib/main_${BUILD_FLAVOR}.dart --no-codesign
